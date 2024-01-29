@@ -9,6 +9,7 @@ import org.anthony.shortlink.admin.dao.entity.UserDO;
 import org.anthony.shortlink.admin.dao.mapper.UserMapper;
 import org.anthony.shortlink.admin.dto.resp.UserRespDTO;
 import org.anthony.shortlink.admin.service.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         UserRespDTO result = new UserRespDTO();
         BeanUtils.copyProperties(userDO,result);
         return result;
+    }
+
+    @Override
+    public Boolean hasUsername(String username) {
+        LambdaQueryWrapper<UserDO> queryWrapper=Wrappers.lambdaQuery(UserDO.class)
+                        .eq(UserDO::getUsername, username);
+
+        UserDO userDO=baseMapper.selectOne(queryWrapper);
+        return userDO==null;
     }
 }

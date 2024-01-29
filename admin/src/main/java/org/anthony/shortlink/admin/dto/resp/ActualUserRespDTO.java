@@ -8,7 +8,7 @@ import org.anthony.shortlink.admin.common.serialize.PhoneDesensitizationSerializ
  * 用户返回参数相应
  */
 @Data
-public class UserRespDTO {
+public class ActualUserRespDTO {
 
     private Long id;
 
@@ -16,7 +16,6 @@ public class UserRespDTO {
 
     private String realName;
 
-    @JsonSerialize(using = PhoneDesensitizationSerializer.class)
     private String phone;
 
     private String mail;
