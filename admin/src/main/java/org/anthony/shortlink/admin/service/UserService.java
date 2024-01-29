@@ -2,6 +2,7 @@ package org.anthony.shortlink.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.anthony.shortlink.admin.dao.entity.UserDO;
+import org.anthony.shortlink.admin.dto.req.UserRegisterReqDTO;
 import org.anthony.shortlink.admin.dto.resp.UserRespDTO;
 
 public interface UserService extends IService<UserDO> {
@@ -19,4 +20,8 @@ public interface UserService extends IService<UserDO> {
      * @return 存在返回True
      */
     Boolean hasUsername(String username);
+
+
+    void register(UserRegisterReqDTO requestParam);
+
 }
