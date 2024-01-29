@@ -5,8 +5,11 @@ import lombok.RequiredArgsConstructor;
 import org.anthony.shortlink.admin.common.convention.result.Result;
 import org.anthony.shortlink.admin.common.convention.result.Results;
 import org.anthony.shortlink.admin.common.enums.UserErrorCodeEnum;
+import org.anthony.shortlink.admin.dto.req.UserLoginReqDTO;
 import org.anthony.shortlink.admin.dto.req.UserRegisterReqDTO;
+import org.anthony.shortlink.admin.dto.req.UserUpdateReqDTO;
 import org.anthony.shortlink.admin.dto.resp.ActualUserRespDTO;
+import org.anthony.shortlink.admin.dto.resp.UserLoginRespDTO;
 import org.anthony.shortlink.admin.dto.resp.UserRespDTO;
 import org.anthony.shortlink.admin.service.UserService;
 import org.springframework.beans.BeanUtils;
@@ -51,9 +54,50 @@ public class UserController {
         return Results.success(userService.hasUsername(username));
     }
 
+    /**
+     * 用户注册
+     * @param requestParam
+     * @return
+     */
     @PostMapping("/api/short-link/v1/user")
     public Result<Void> register(@RequestBody UserRegisterReqDTO requestParam){
         userService.register(requestParam);
+        return Results.success();
+    }
+
+    /**
+     * 用户更新
+     * @param requestParam
+     * @return
+     */
+    @PutMapping("/api/short-link/v1/user")
+    public Result<Void> update(@RequestBody UserUpdateReqDTO requestParam){
+        userService.update(requestParam);
+        return Results.success();
+    }
+
+    /**
+     * 用户登陆
+     * @param requestParam
+     * @return
+     */
+    @PostMapping("/api/short-link/v1/user/login")
+    public Result<UserLoginRespDTO> login(@RequestBody UserLoginReqDTO requestParam){
+        UserLoginRespDTO result=userService.login(requestParam);
+        return Results.success(userService.login(requestParam));
+    }
+
+    /**
+     * 检查用户是否登陆
+     */
+    @PostMapping("/api/short-link/v1/user/check-login")
+    public Result<Boolean> checkLogin(@RequestParam("username") String username,@RequestParam("token") String token){
+        return Results.success(userService.checkLogin(username,token));
+    }
+
+    @DeleteMapping("/api/short-link/v1/user/logout")
+    public Result<Void> logout(@RequestParam("username") String username,@RequestParam("token") String token){
+        userService.logout(username,token);
         return Results.success();
     }
 }
