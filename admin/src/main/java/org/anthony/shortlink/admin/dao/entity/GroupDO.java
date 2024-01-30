@@ -1,15 +1,11 @@
 package org.anthony.shortlink.admin.dao.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.anthony.shortlink.admin.common.database.BaseDO;
-
-import java.util.Date;
 
 /**
  * 短链接分组实体
@@ -29,5 +25,8 @@ public class GroupDO extends BaseDO {
 
     private String username;
 
-
+    /**
+     * 分组排序
+     */
+    private Integer sortOrder;
 }
