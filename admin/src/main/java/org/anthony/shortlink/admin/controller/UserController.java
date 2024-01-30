@@ -59,7 +59,7 @@ public class UserController {
      * @param requestParam
      * @return
      */
-    @PostMapping("/api/short-link/v1/user")
+    @PostMapping("/api/short-link/admin/v1/user")
     public Result<Void> register(@RequestBody UserRegisterReqDTO requestParam){
         userService.register(requestParam);
         return Results.success();
@@ -70,7 +70,7 @@ public class UserController {
      * @param requestParam
      * @return
      */
-    @PutMapping("/api/short-link/v1/user")
+    @PutMapping("/api/short-link/admin/v1/user")
     public Result<Void> update(@RequestBody UserUpdateReqDTO requestParam){
         userService.update(requestParam);
         return Results.success();
@@ -81,7 +81,7 @@ public class UserController {
      * @param requestParam
      * @return
      */
-    @PostMapping("/api/short-link/v1/user/login")
+    @PostMapping("/api/short-link/admin/v1/user/login")
     public Result<UserLoginRespDTO> login(@RequestBody UserLoginReqDTO requestParam){
         UserLoginRespDTO result=userService.login(requestParam);
         return Results.success(userService.login(requestParam));
@@ -90,12 +90,12 @@ public class UserController {
     /**
      * 检查用户是否登陆
      */
-    @PostMapping("/api/short-link/v1/user/check-login")
+    @PostMapping("/api/short-link/admin/v1/user/check-login")
     public Result<Boolean> checkLogin(@RequestParam("username") String username,@RequestParam("token") String token){
         return Results.success(userService.checkLogin(username,token));
     }
 
-    @DeleteMapping("/api/short-link/v1/user/logout")
+    @DeleteMapping("/api/short-link/admin/v1/user/logout")
     public Result<Void> logout(@RequestParam("username") String username,@RequestParam("token") String token){
         userService.logout(username,token);
         return Results.success();
