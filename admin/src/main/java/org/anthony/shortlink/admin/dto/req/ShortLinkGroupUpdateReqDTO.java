@@ -8,4 +8,6 @@ public class ShortLinkGroupUpdateReqDTO {
     private String gid;
 
     private String name;
+
+
 }
