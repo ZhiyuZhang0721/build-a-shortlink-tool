@@ -8,7 +8,7 @@ import java.util.Date;
  * 短链接创建请求对象
  */
 @Data
-public class ShortLinkCreateRepDTO {
+public class ShortLinkCreateReqDTO {
 
 
     /**

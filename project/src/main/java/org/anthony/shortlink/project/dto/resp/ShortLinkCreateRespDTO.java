@@ -1,6 +1,9 @@
 package org.anthony.shortlink.project.dto.resp;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -8,6 +11,9 @@ import java.util.Date;
  * 短链接创建响应对象
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ShortLinkCreateRespDTO {
 
     /**
