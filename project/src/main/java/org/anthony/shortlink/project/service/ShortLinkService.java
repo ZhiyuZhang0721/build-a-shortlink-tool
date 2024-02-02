@@ -3,7 +3,9 @@ package org.anthony.shortlink.project.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.anthony.shortlink.project.dao.entity.ShortLinkDO;
 import org.anthony.shortlink.project.dto.req.ShortLinkCreateReqDTO;
+import org.anthony.shortlink.project.dto.req.ShortLinkPageReqDTO;
 import org.anthony.shortlink.project.dto.resp.ShortLinkCreateRespDTO;
+import org.anthony.shortlink.project.dto.resp.ShortLinkPageRespDTO;
 
 public interface ShortLinkService extends IService<ShortLinkDO> {
     /**
@@ -12,4 +14,6 @@ public interface ShortLinkService extends IService<ShortLinkDO> {
      * @return 短链接返回参数
      */
     ShortLinkCreateRespDTO createShortLink(ShortLinkCreateReqDTO requestParam);
+
+    ShortLinkPageRespDTO pageShortLink(ShortLinkPageReqDTO requestParam);
 }
